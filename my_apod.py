@@ -47,10 +47,11 @@ def home():
 @app.route('/apod', methods=['GET'])
 def myapod():
 # calling API with date parameter
-    api_date = random_date()
-    print("api_date: ", api_date)
+#    api_date = random_date()
+#    print("api_date: ", api_date)
 #    r = requests.get('https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date=2023-02-10')  
-    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date={api_date}")
+#    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date={api_date}")
+    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxxx&date={random_date()}")
 #    json_data = json.load(r.text)
     json_data = r.json()
     image_url = json_data["hdurl"]
