@@ -47,22 +47,19 @@ def home():
 @app.route('/apod', methods=['GET'])
 def myapod():
 # calling API with date parameter
-#    api_date = random_date()
+    api_date = random_date()
 #    print("api_date: ", api_date)
 #    r = requests.get('https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date=2023-02-10')  
-#    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date={api_date}")
-    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxxx&date={random_date()}")
+    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date={api_date}")
+#    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxxx&date={random_date()}")
 #    json_data = json.load(r.text)
     json_data = r.json()
     image_url = json_data["hdurl"]
     explanation = json_data["explanation"]
-#    response = requests.get(image_url)
-#    img = Image.open(BytesIO(response.content))
-#    img = Image.open(requests.get(image_url, stream=True).raw)
-#    return send_file(img, mimetype='image/jpg')       
     return render_template(
         'apod.html',
-        title='Flask-Login Tutorial.',
+        title='NASA Astronomy pictures',
+        date=api_date,
         explanation=explanation,
         image_url=image_url
     )

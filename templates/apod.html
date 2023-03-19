@@ -1,16 +1,34 @@
 <!doctype html>
 <html>
   <head>
-	  <title>NASA API</title>
+	  <title>{{ title }}</title>
   </head>
-  <body>
-	  <div style="border:1px solid black">  
-	      <img src="{{ image_url }}" alt="NASA picture" style="width:1200px;height:900px;"> 
-	 <!-- <img src="{{ image_url }}" alt="NASA picture"> -->
-          </div>
-    <div>
-	    <h2 style="text-align:center"> Explanation </h3>
+<body>	
+	<div style="border:1px solid black">  		
+		<img src="{{ image_url }}" alt="NASA picture" style="width:1245px;height:910px;"> 
+	        <!-- <img src="{{ image_url }}" alt="NASA picture"> -->
+        </div>
+    <div>      
+          <div style="border:1px solid black">
+              <div id="mydiv"style="display: inline-block; margin: 0 auto; position: relative; text-align: center;" >
+             Click or press any buttton for next image
+           </div>
+	    	    
+	    <h2 style="text-align:center"> Explanation </h2>
+	    <h4 style="text-align:left"> {{ date }}</h4>
 	    <p2> {{ explanation }} </p2>
     </div>	    
-  </body>
+  <script>
+    window.setTimeout(() => {
+    flash = document.getElementById('mydiv');
+    flash.style.visibility = 'hidden';	   
+    }, 2000);
+    window.addEventListener("click", function(event) {
+    window.location.reload();    
+    });
+    window.addEventListener("keypress", function(event) {
+    window.location.reload();    
+    });
+ </script>	  
+</body>
 </html>
