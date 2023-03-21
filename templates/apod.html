@@ -23,11 +23,10 @@
     flash = document.getElementById('mydiv');
     flash.style.visibility = 'hidden';	   
     }, 2000);
-    window.addEventListener("click", function(event) {
-    window.location.reload();    
-    });
-    window.addEventListener("keypress", function(event) {
-    window.location.reload();    
+    ["click", "keypress"].forEach(ev=>{
+	    window.addEventListener(ev, function(e) {
+            window.location.reload();    
+            });
     });
  </script>	  
 </body>
