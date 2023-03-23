@@ -44,13 +44,17 @@ def home():
     )
 
 
-@app.route('/apod', methods=['GET'])
+#@app.route('/apod', methods=['GET'])
+@app.route('/apod')                    #by default is to only accept GET and HEAD requests (*).
 def myapod():
 # calling API with date parameter
     api_date = random_date()
+    payload = {'api_key': 'DEMO_KEY', 'date': api_date }
 #    print("api_date: ", api_date)
 #    r = requests.get('https://api.nasa.gov/planetary/apod?api_key=xxxxxxxx&date=2023-02-10')  
-    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date={api_date}")
+#    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date={api_date}")
+    
+    r = requests.get('https://api.nasa.gov/planetary/apod', params=payload) # params for GET and data and headers for POST methods 
 #    r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key=xxxxxxxxx&date={random_date()}")
 #    json_data = json.load(r.text)
     json_data = r.json()
